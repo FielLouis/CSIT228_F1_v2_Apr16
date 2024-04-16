@@ -30,7 +30,7 @@
             <TextField prefHeight="28.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <Label text="Label" GridPane.rowIndex="3" />
             <TextField accessibleRole="PASSWORD_FIELD" prefHeight="25.0" prefWidth="59.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Log In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Log In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" onAction="#onSigninClick" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME TO CIT" textAlignment="CENTER" GridPane.columnSpan="3" />
          </children>
       </GridPane>
