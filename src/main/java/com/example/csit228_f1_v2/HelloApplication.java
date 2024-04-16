@@ -33,7 +33,7 @@ public class HelloApplication extends Application {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         Text txtWelcome = new Text("Welcome to CIT");
-        txtWelcome.setFont(Font.font("Chiller", FontWeight.EXTRA_BOLD, 69));
+        txtWelcome.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 69));
         txtWelcome.setFill(Color.RED);
 //        grid.setAlignment();
         grid.setPadding(new Insets(20));

@@ -9,9 +9,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.Scanner;
 
-public class HelloController {
+public class LogInController {
     public GridPane pnLogin;
     public AnchorPane pnMain;
     public VBox pnHome;
@@ -29,7 +28,5 @@ public class HelloController {
         AnchorPane p = (AnchorPane) pnLogin.getParent();
         p.getChildren().remove(pnLogin);
         p.getChildren().add(homeview);
-
-
     }
 }
