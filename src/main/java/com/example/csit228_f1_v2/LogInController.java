@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class LogInController {
     public GridPane pnLogin;
-    public AnchorPane pnMain;
+    public AnchorPane pnMain, pnRegister;
     public VBox pnHome;
     @FXML
     private Label welcomeText;
@@ -24,7 +24,7 @@ public class LogInController {
     }
     @FXML
     protected void onSigninClick() throws IOException {
-        Parent homeview = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("home-view.fxml")));
+        Parent homeview = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("homepage.fxml")));
         AnchorPane p = (AnchorPane) pnLogin.getParent();
         p.getChildren().remove(pnLogin);
         p.getChildren().add(homeview);

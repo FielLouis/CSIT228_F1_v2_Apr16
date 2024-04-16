@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class RegisterController {
-    public GridPane pnRegister;
+    public AnchorPane pnRegister;
     public AnchorPane pnMain;
 
     public TextField txtusername, txtupass;

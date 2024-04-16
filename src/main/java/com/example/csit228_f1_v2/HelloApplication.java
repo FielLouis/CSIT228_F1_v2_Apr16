@@ -28,9 +28,10 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+//        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 //        stage.setTitle("Hello!");
 //        stage.setScene(scene);
+//        stage.show();
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -95,9 +96,26 @@ public class HelloApplication extends Application {
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Hello");
                 try {
                     Parent p = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepage.fxml")));
+                    Scene s = new Scene(p);
+                    stage.setScene(s);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Button btnRegister = new Button("Register");
+        btnRegister.setFont(Font.font(40));
+        grid.add(btnRegister, 0, 4, 2, 1);
+
+        btnRegister.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    Parent p = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
                     Scene s = new Scene(p);
                     stage.setScene(s);
                     stage.show();
