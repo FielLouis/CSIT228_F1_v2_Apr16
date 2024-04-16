@@ -2,18 +2,20 @@ package com.example.csit228_f1_v2;
 
 import java.sql.*;
 
+//JUST A HELPER CLASS TO SEE THE METHOD IMPLEMENTATION OF CRUD
+//NOT USED IN ANY PART OF THE PROGRAM LEL
 public class CRUD {
     public static void insertData() {
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement(
-                     "INSERT INTO tblusers (name, email) VALUES (?, ?)"
+                     "INSERT INTO tblusers (uname, password) VALUES (?, ?)"
              )) {
 
-            String name = "Karylle de los Reyes";
-            String email = "karylle@gmail.com";
+            String username = "test";
+            String userpassword = "test";
 
-            statement.setString(1, name);
-            statement.setString(2, email);
+            statement.setString(1, username);
+            statement.setString(2, userpassword);
 
             int rowsInserted = statement.executeUpdate();
             System.out.println("Rows Inserted " + rowsInserted);
@@ -41,7 +43,7 @@ public class CRUD {
         }
     }
 
-    public static void upadateData() {
+    public static void updateData() {
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement(
                      "UPDATE tblusers SET name=? WHERE id=?"
