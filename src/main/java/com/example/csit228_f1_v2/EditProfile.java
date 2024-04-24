@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Objects;
 
 public class EditProfile {
@@ -30,6 +31,7 @@ public class EditProfile {
              PreparedStatement statement = c.prepareStatement(
                      "UPDATE tblusers SET uname=? WHERE id=?"
              )) {
+            c.setAutoCommit(false);
             String new_name = tfEditUsername.getText();
 
             statement.setString(1, new_name);
@@ -37,6 +39,7 @@ public class EditProfile {
 
             statement.executeUpdate();
             CurrentUser.setCurrentUser(new_name);
+            c.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,8 +64,12 @@ public class EditProfile {
              PreparedStatement statement = c.prepareStatement(
                      "DELETE FROM tblusers WHERE id=?"
              )){
+            c.setAutoCommit(false);
             statement.setInt(1, CurrentUser.getCurrentUserID());
             statement.executeUpdate();
+            c.commit();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("Cant delete user when user still has some events");
         } catch (SQLException e) {
             e.printStackTrace();
         }

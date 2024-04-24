@@ -118,12 +118,14 @@ public class HomeController implements Initializable{
         String query = "DELETE FROM tblevents WHERE uid=? AND eventTitle=?";
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement preparedStatement = c.prepareStatement(query)) {
+            c.setAutoCommit(false);
             preparedStatement.setInt(1, CurrentUser.getCurrentUserID());
             preparedStatement.setString(2, title);
             int deletedRows = preparedStatement.executeUpdate();
             if (deletedRows > 0) {
                 eventList.removeIf(event -> event.getEventTitle().equals(title));
             }
+            c.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
