@@ -25,7 +25,8 @@
           <TableColumn fx:id="descColumn" prefWidth="350.0" text="Description" />
           <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type" />
           <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
-          <TableColumn fx:id="btnColumn" prefWidth="125.0" />
+          <TableColumn fx:id="btnDelColumn" prefWidth="65.0" />
+          <TableColumn fx:id="btnEditColumn" prefWidth="65.0" />
         </columns>
       </TableView>
       <Button fx:id="btnAddEvent" layoutX="14.0" layoutY="255.0" mnemonicParsing="false" onAction="#onAddEventClick" text="Add Event" />

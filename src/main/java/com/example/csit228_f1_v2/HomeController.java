@@ -19,7 +19,8 @@ public class HomeController implements Initializable{
     public Label lblUsername;
     public AnchorPane apHome;
     public Button btnAddEvent;
-    public TableColumn btnColumn;
+    public TableColumn btnDelColumn;
+    public TableColumn btnEditColumn;
     @FXML
     private TableView<Events> tblEvents;
     @FXML
@@ -41,10 +42,8 @@ public class HomeController implements Initializable{
         descColumn.setCellValueFactory(eventsStringCellDataFeatures -> eventsStringCellDataFeatures.getValue().descProperty());
         typeColumn.setCellValueFactory(eventsStringCellDataFeatures -> eventsStringCellDataFeatures.getValue().typeProperty());
         dateColumn.setCellValueFactory(eventsDateCellDataFeatures -> eventsDateCellDataFeatures.getValue().dateProperty());
-        btnColumn.setCellFactory(tableColumn -> new ButtonDeleteTableCell<>("Delete"));
-        btnColumn.setCellFactory(param -> new ButtonDeleteTableCell("Delete") {
+        btnDelColumn.setCellFactory(param -> new ButtonDeleteTableCell("Delete") {
             private final Button deleteButton = new Button("Delete");
-
             {
                 deleteButton.setOnAction(event -> {
                     Events eventToDelete = (Events) getTableView().getItems().get(getIndex());
@@ -62,6 +61,34 @@ public class HomeController implements Initializable{
                 }
             }
         });
+        btnEditColumn.setCellFactory(param -> new ButtonEditTableCell<>("Edit") {
+            private final Button updateButton = new Button("Edit");
+            {
+                updateButton.setOnAction(event -> {
+                    Events eventToUpdate = (Events) getTableView().getItems().get(getIndex());
+
+                    try {
+                        Parent edit = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("edit-event.fxml")));
+                        AnchorPane p = (AnchorPane) apHome.getParent();
+                        p.getChildren().remove(apHome);
+                        p.getChildren().add(edit);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                });
+            }
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(updateButton);
+                }
+            }
+        });
+
 
         try (Connection c = MySQLConnection.getConnection();
              Statement statement = c.createStatement()) {
