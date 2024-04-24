@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="apAddEvent" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.AddEvent">
+    <children>
+        <GridPane fx:id="pnAddEvent" alignment="CENTER" hgap="22.0" prefHeight="600.0" prefWidth="1000.0" vgap="10.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" />
+                <ColumnConstraints />
+                <ColumnConstraints halignment="CENTER" />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints valignment="CENTER" />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            </rowConstraints>
+            <children>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="TracEVENTS" textAlignment="CENTER" GridPane.columnSpan="8" GridPane.rowIndex="0">
+                    <font>
+                        <Font name="System Bold" size="43.0" />
+                    </font></Text>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="ADD EVENT" textAlignment="CENTER" GridPane.columnSpan="8" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Text>
+                <Label text="Event Title:" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="15.0" />
+                    </font></Label>
+                <TextField fx:id="tfEventTitle" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                <Label text="Event Description:" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="15.0" />
+                    </font></Label>
+                <TextArea wrapText="true" fx:id="taEventDesc" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="4" GridPane.rowSpan="3"/>
+                <Label text="Event Type:" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="15.0" />
+                    </font></Label>
+                <TextField fx:id="tfEventType" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                <Label text="Date:" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="15.0"/>
+                    </font></Label>
+                <DatePicker fx:id="dpDate" GridPane.columnIndex="7" GridPane.rowIndex="3"/>
+                <Label fx:id="lblFeedback" GridPane.columnSpan="8" GridPane.rowIndex="8">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Label>
+                <Button mnemonicParsing="false" onAction="#onAddClick" text="Add" GridPane.columnIndex="0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+                <Button mnemonicParsing="false" onAction="#onToHomeClick" text="Go Back" GridPane.columnIndex="5" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>

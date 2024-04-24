@@ -62,7 +62,6 @@ public class LogInController {
                     //getting current user
                     CurrentUser.setCurrentUser(username);
                     CurrentUser.setCurrentUserID(id);
-                    System.out.println("username set");
 
                     Parent homeview = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("homepage.fxml")));
                     AnchorPane p = (AnchorPane) pnLogin.getParent();

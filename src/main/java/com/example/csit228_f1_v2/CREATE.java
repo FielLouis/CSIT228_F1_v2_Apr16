@@ -2,8 +2,6 @@ package com.example.csit228_f1_v2;
 
 import java.sql.*;
 
-//JUST A HELPER CLASS TO SEE THE METHOD IMPLEMENTATION OF CRUD
-//NOT USED IN ANY PART OF THE PROGRAM LEL
 public class CREATE {
     public static void createTableUser() {
         try (Connection c = MySQLConnection.getConnection();
@@ -13,8 +11,9 @@ public class CREATE {
                             "uname VARCHAR(50) NOT NULL," +
                             "upassword VARCHAR(50) NOT NULL )"
             )) {
-
+            c.setAutoCommit(false);
             statement.execute();
+            c.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -28,11 +27,13 @@ public class CREATE {
                             "eventTitle VARCHAR(50) NOT NULL," +
                             "eventDescription VARCHAR(255) NOT NULL," +
                             "eventType VARCHAR(50) NOT NULL," +
+                            "eventDate DATE NOT NULL," +
                             "uid INTEGER(11) NOT NULL," +
                             "FOREIGN KEY (uid) REFERENCES tblusers(id))"
             )) {
-
+            c.setAutoCommit(false);
             statement.execute();
+            c.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
