@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pnRegister" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.RegisterController">
+<AnchorPane fx:id="pnRegister" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.RegisterController">
    <children>
-       <GridPane fx:id="pnLogin" alignment="CENTER" hgap="22.0" prefHeight="400.0" prefWidth="600.0" vgap="10.0">
+       <GridPane fx:id="pnLogin" alignment="CENTER" hgap="22.0" prefHeight="600.0" prefWidth="800.0" vgap="10.0">
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
@@ -28,11 +28,11 @@
             <RowConstraints />
           </rowConstraints>
           <children>
-              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME TO CIT" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.rowIndex="0">
+              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="TracEVENTS" textAlignment="CENTER" GridPane.columnSpan="4" GridPane.rowIndex="0">
                   <font>
                       <Font name="System Bold" size="43.0" />
                   </font></Text>
-              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="USER REGISTRATION" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.rowIndex="1">
+              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="USER REGISTRATION" textAlignment="CENTER" GridPane.columnSpan="4" GridPane.rowIndex="1">
                   <font>
                       <Font size="20.0" />
                   </font></Text>
@@ -48,15 +48,22 @@
               <TextField fx:id="tfTmpPass" prefHeight="30.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
               <PasswordField fx:id="pfUserPass" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
               <Button mnemonicParsing="false" onMouseClicked="#onShowPassword" onMouseExited="#onUnshowPassword" onMousePressed="#onShowPassword" onMouseReleased="#onUnshowPassword" prefHeight="30.0" prefWidth="30.0" text="👁" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-              <Label fx:id="lblFeedback" GridPane.columnSpan="3" GridPane.rowIndex="6">
+              <Label text="Confirm Password:" GridPane.rowIndex="7">
                   <font>
                       <Font size="20.0" />
                   </font></Label>
-              <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Register User" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+              <TextField fx:id="tfConfirmPass" prefHeight="30.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+              <PasswordField fx:id="pfConfirmPass" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+              <Button mnemonicParsing="false" onMouseClicked="#onShowPassword1" onMouseExited="#onUnshowPassword1" onMousePressed="#onShowPassword1" onMouseReleased="#onUnshowPassword1" prefHeight="30.0" prefWidth="30.0" text="👁" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+              <Label fx:id="lblFeedback" GridPane.columnSpan="4" GridPane.rowIndex="8">
+                  <font>
+                      <Font size="20.0" />
+                  </font></Label>
+              <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Register User" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9">
                <font>
                   <Font size="20.0" />
                </font></Button>
-              <Button mnemonicParsing="false" onAction="#onToLogInClick" text="To Log In" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+              <Button mnemonicParsing="false" onAction="#onToLogInClick" text="To Log In" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9">
                <font>
                   <Font size="20.0" />
                </font></Button>

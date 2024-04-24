@@ -1,34 +1,38 @@
 package com.example.csit228_f1_v2;
 
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleButton;
+import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class HomeController {
+    public Button btnLogOut, btnEditProfile;
+    public Label lblUsername;
+    public AnchorPane apHome;
 
-    public ToggleButton tbNight;
-    public ProgressIndicator piProgress;
-    public Slider slSlider;
-    public ProgressBar pbProgress;
-
-    public void onSliderChange() {
-        double val = slSlider.getValue();
-        System.out.println(val);
-        piProgress.setProgress(val/100);
-        pbProgress.setProgress(val/100);
-        if (val == 100) {
-            System.exit(0);
-        }
+    public void initialize() {
+        //initializing current username display
+        lblUsername.setText(CurrentUser.getCurrentUser());
     }
 
-    public void onNightModeClick() {
-        if (tbNight.isSelected()) {
-            tbNight.getParent().setStyle("-fx-background-color: BLACK");
-            tbNight.setText("DAY");
-        } else {
-            tbNight.getParent().setStyle("-fx-background-color: WHITE");
-            tbNight.setText("NIGHT");
-        }
+    public void onToEditProfileClick() throws IOException {
+        Parent edit = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("edit-profile.fxml")));
+        AnchorPane p = (AnchorPane) apHome.getParent();
+        p.getChildren().remove(apHome);
+        p.getChildren().add(edit);
+    }
+
+    public void onLogOutClick() throws IOException {
+        // setting current user to null
+        CurrentUser.logoutCurrentUser();
+
+        Parent login = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("login-view.fxml")));
+        AnchorPane p = (AnchorPane) apHome.getParent();
+        p.getChildren().remove(apHome);
+        p.getChildren().add(login);
     }
 }

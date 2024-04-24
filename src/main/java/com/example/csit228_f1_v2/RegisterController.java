@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import org.w3c.dom.Text;
 
@@ -20,22 +21,30 @@ import java.util.Objects;
 
 public class RegisterController {
     public AnchorPane pnRegister;
-    public AnchorPane pnMain;
     public TextField tfUsername;
-    public TextField tfTmpPass;
-    public PasswordField pfUserPass;
+    public TextField tfTmpPass, tfConfirmPass;
+    public PasswordField pfUserPass, pfConfirmPass;
     public Label lblFeedback;
+    public GridPane pnLogin;
 
     @FXML
     protected void onRegisterClick() {
         //insert data
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement(
-                     "INSERT INTO tblusers (uname, password) VALUES (?, ?)"
+                     "INSERT INTO tblusers (uname, upassword) VALUES (?, ?)"
              )) {
+
             String username = tfUsername.getText();
-            String userpassword = pfUserPass.getText();
+            String userpassword = String.valueOf(pfUserPass.getText().hashCode());
+            String confirmpassword = String.valueOf(pfConfirmPass.getText().hashCode());
             boolean usernameAlreadyExists = false;
+
+            if(!confirmpassword.equals(userpassword)) {
+                lblFeedback.setText("Password does not match!");
+                lblFeedback.setTextFill(Color.RED);
+                return;
+            }
 
             //read existing data
             String query = "SELECT * FROM tblusers";
@@ -65,9 +74,10 @@ public class RegisterController {
                 lblFeedback.setTextFill(Color.GREEN);
             }
 
-            //set both fields into no characters after button click
+            //set all fields into no characters after button click
             tfUsername.setText("");
             pfUserPass.setText("");
+            pfConfirmPass.setText("");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,5 +100,17 @@ public class RegisterController {
         pfUserPass.setVisible(true);
         pfUserPass.setText(tfTmpPass.getText());
         tfTmpPass.setVisible(false);
+    }
+
+    public void onShowPassword1(MouseEvent mouseEvent) {
+        tfConfirmPass.setText(pfConfirmPass.getText());
+        tfConfirmPass.setVisible(true);
+        pfConfirmPass.setVisible(false);
+    }
+
+    public void onUnshowPassword1(MouseEvent mouseEvent) {
+        pfConfirmPass.setVisible(true);
+        pfConfirmPass.setText(tfConfirmPass.getText());
+        tfConfirmPass.setVisible(false);
     }
 }

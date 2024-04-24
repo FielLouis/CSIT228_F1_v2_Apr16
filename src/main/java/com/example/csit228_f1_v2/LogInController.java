@@ -22,21 +22,14 @@ import java.util.Objects;
 public class LogInController {
     public GridPane pnLogin;
     public AnchorPane pnMain;
-    public VBox pnHome;
     public Label lblFeedback;
     public TextField tfUsername, tfTmpPass;
     public PasswordField pfUserPass;
     @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-    @FXML
     protected void onLogInClick() throws IOException {
         String username = tfUsername.getText();
-        String userpassword = pfUserPass.getText();
+        String userpassword = String.valueOf(pfUserPass.getText().hashCode());
+        int id = 1;
         boolean usernameAlreadyExists = false;
         boolean correctPassword = false;
 
@@ -47,9 +40,9 @@ public class LogInController {
             ResultSet res = statement.executeQuery(query);
 
             while(res.next()) {
-                int id = res.getInt("id");
+                id = res.getInt("id");
                 String uname = res.getString("uname");
-                String upass = res.getString("password");
+                String upass = res.getString("upassword");
 
                 //checks if username exists
                 if(uname.equals(username)) {
@@ -66,8 +59,14 @@ public class LogInController {
             if(usernameAlreadyExists) {
                 //if successful login info
                 if(correctPassword) {
+                    //getting current user
+                    CurrentUser.setCurrentUser(username);
+                    CurrentUser.setCurrentUserID(id);
+                    System.out.println("username set");
+
                     Parent homeview = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("homepage.fxml")));
                     AnchorPane p = (AnchorPane) pnLogin.getParent();
+
                     p.getChildren().remove(pnLogin);
                     p.getChildren().add(homeview);
                 } else {
